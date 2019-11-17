@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/15 16:59:46 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 18:00:59 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,10 +15,28 @@
 #include "./libft/include/get_next_line.h"
 #include "./libft/include/libft.h"
 
-void    init_struct(t_bool *new)
+t_bool		*ft_set_struct(t_bool *struc)
 {
-    new->left = 0;
-    new->pre = 0;
-    new->zero = 0;
-    new->pre_star = 0;
+	if (struc == NULL)
+		if (!(struc = malloc(struc)))
+			return (NULL);
+	struc->arg = malloc(2);
+	struc->pre = 0;
+	struc->zero = 0;
+	struc->pre_star = 0;
+	struc->arg = NULL;
+	return (struc);
+}
+
+int			ft_no_pre(const char *format, va_list args, int *sign,
+					t_bool *struc)
+{
+	char	*ptr;
+
+	ptr = ft_do_flag(args, format[0], sign, struc);
+	if (*sign == -1)
+		return (-1);
+	write(1, ptr, ft_strlen(ptr));
+	free(ptr);
+	return (1);
 }

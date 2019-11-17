@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/09 14:08:20 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/15 16:42:47 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 18:06:08 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,24 +29,26 @@ static int		ft_verif_flag(char *flag, char verif)
 static int		ft_check_flags(const char *format, va_list args, char *flag)
 {
 	int		i;
-	int		sign;
-	char	*print;
+	int		*sign;
+	t_bool	*struc;
 
+	struc = NULL;
+	if ((struc = ft_set_struct(struc)) == NULL)
+		return (-1);
 	i = 1;
 	sign = 0;
-	if (format[i] >= '0' && format[i] <= '9')
-		;
-	else if (format[i] == '.' || format[i] == '*' || format[i] == '-')
-		;
-	else if (ft_verif_flag(flag, format[i]) == 1)
+	if (format[i] >= '%')
 	{
+		write(1, &format[i], 1);
 		i += 1;
-		print = ft_do_flag(args, format[i], &sign);
-		if (sign == -1)
-			return (-1);
-		write(1, print, ft_strlen(print));
-		free(print);
 	}
+	else if (format[i] >= '0' && format[i] <= '9')
+		i += 0;
+	else if (format[i] == '.' || format[i] == '*' || format[i] == '-')
+		i += 0;
+	else if (ft_verif_flag(flag, format[i]) == 1)
+		i += ft_no_pre(&format[i], args, sign, struc);
+	i = ft_end_one_check(sign, struc, i);
 	return (i);
 }
 
@@ -54,20 +56,16 @@ static int		ft_write(const char *format)
 {
 	int i;
 
-	i = ft_strlchr(format, ' ');
+	i = ft_strlchr(format, '%');
 	write(1, format, i);
 	return (i);
 }
 
-static int		ft_init(const char *format, va_list args, t_list *flags)
+static int		ft_init(const char *format, va_list args, char *flag)
 {
 	int		i;
 	int		j;
-	char	*flag;
 
-	if (!(flag = malloc(ft_strlen('cspdiuxX') + 1)))
-		return (NULL);
-	flag = 'cspdiuxX\0';
 	i = 0;
 	while (format[i] != '\0')
 	{
@@ -79,24 +77,21 @@ static int		ft_init(const char *format, va_list args, t_list *flags)
 			i += j;
 		}
 		i += ft_write(&format[i]);
-		while (format[i] == ' ')
-		{
-			write(1, format, 1);
-			i++;
-		}
 	}
-	free(flag);
 	return (i);
 }
 
 int				ft_printf(const char *format, ...)
 {
 	va_list	args;
-	t_list	*flags;
 	int		i;
+	char	*flag;
 
+	if ((flag = ft_strdup("cspdiuxX")) == NULL)
+		return (-1);
 	va_start(args, format);
-	i = ft_init(format, args, flags);
+	i = ft_init(format, args, flag);
 	va_end(args);
+	free(flag);
 	return (0);
 }

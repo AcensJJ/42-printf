@@ -1,22 +1,42 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_putstr.c                                      .::    .:/ .      .::   */
+/*   ft_create_base.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/08/02 11:20:40 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 13:04:06 by jacens      ###    #+. /#+    ###.fr     */
+/*   Created: 2019/11/17 17:25:16 by jacens       #+#   ##    ##    #+#       */
+/*   Updated: 2019/11/17 17:25:30 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *str)
+char	*ft_create_base(int size)
 {
-	char	c;
+	char 	*ptr;
+	int		i;
 
-	if (str != NULL)
-		write(1, str, ft_strlen(str));
+	if (size > 16 || size < 0 || (ptr = malloc(size + 1)) == NULL)
+		return (NULL);
+	i = 1;
+	while (i != size && i < 10)
+	{
+		ptr[i] = i;
+		i++;
+	}
+	if (size > 9)
+		ptr[i] = 'a';
+	if (size > 9)
+		ptr[i] = 'b';
+	if (size > 9)
+		ptr[i] = 'c';
+	if (size > 9)
+		ptr[i] = 'd';
+	if (size > 9)
+		ptr[i] = 'e';
+	if (size > 9)
+		ptr[i] = 'f';
+	return (ptr);
 }

@@ -6,7 +6,7 @@
 #    By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/18 15:41:28 by jacens       #+#   ##    ##    #+#        #
-#    Updated: 2019/11/15 14:08:13 by jacens      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/17 18:08:43 by jacens      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -20,7 +20,10 @@ HEADER  =   ft_printf.h
 
 LFLAGS  =   -I $(HEADER)
 
-SRCS    =	ft_printf.c
+SRCS    =	ft_printf.c\
+			ft_printf_outils.c\
+			ft_flags_printf.c\
+			ft_pre_printf.c
 
 OBJ     =   $(SRCS:.c=.o)
 
@@ -38,7 +41,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(LFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJ)
 	make clean -C $(DIR_LIB)
 
 fclean: clean

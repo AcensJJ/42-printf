@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_putstr.c                                      .::    .:/ .      .::   */
+/*   ft_strcat.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/08/02 11:20:40 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 13:04:06 by jacens      ###    #+. /#+    ###.fr     */
+/*   Created: 2019/08/05 16:21:19 by jacens       #+#   ##    ##    #+#       */
+/*   Updated: 2019/11/17 15:20:03 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putstr(char *str)
+char	*ft_strcat(char *dest, const char *src)
 {
-	char	c;
+	int i;
+	int j;
 
-	if (str != NULL)
-		write(1, str, ft_strlen(str));
+	i = 0;
+	j = 0;
+	i = ft_strlen(dest);
+	while (src[j] != '\0')
+	{
+		dest[i + j] = src[j];
+		j++;
+	}
+	dest[i + j] = '\0';
+	return (dest);
 }
