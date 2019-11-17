@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 18:00:59 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 18:15:49 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@
 t_bool		*ft_set_struct(t_bool *struc)
 {
 	if (struc == NULL)
-		if (!(struc = malloc(struc)))
+		if (!(struc = malloc(sizeof(struc))))
 			return (NULL);
 	struc->arg = malloc(2);
 	struc->pre = 0;

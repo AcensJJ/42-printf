@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 15:11:54 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 17:51:15 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/17 18:15:11 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,6 +21,7 @@ static char		*ft_do_flag3(va_list args, char format, int *sign,
 	char	*str;
 	char	*ptr;
 
+	str = NULL;
 	if (format == 'p')
 	{
 		if ((ptr = ft_uitoa_base(va_arg(args, void *),
@@ -69,7 +70,7 @@ static char		*ft_do_flag2(va_list args, char format, int *sign,
 			*sign = -1;
 	}
 	else
-		str = ft_do_flag2(args, format, sign, struc);
+		str = ft_do_flag3(args, format, sign, struc);
 	return (str);
 }
 
