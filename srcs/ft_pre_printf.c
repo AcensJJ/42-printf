@@ -6,14 +6,14 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 18:15:49 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/18 11:39:52 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include "./libft/include/get_next_line.h"
-#include "./libft/include/libft.h"
+#include "ft_printf.h"
+#include "../libft/include/get_next_line.h"
+#include "../libft/include/libft.h"
 
 t_bool		*ft_set_struct(t_bool *struc)
 {

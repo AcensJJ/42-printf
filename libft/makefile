@@ -6,7 +6,7 @@
 #    By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/18 15:41:28 by jacens       #+#   ##    ##    #+#        #
-#    Updated: 2019/11/14 18:37:47 by jacens      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/18 13:16:32 by jacens      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -26,7 +26,9 @@ SRCS =  srcs/ft_atoi.c\
 		srcs/ft_isascii.c\
 		srcs/ft_isdigit.c\
 		srcs/ft_isprint.c\
+		srcs/ft_count_nbr.c\
 		srcs/ft_itoa.c\
+		srcs/ft_uitoa.c\
 		srcs/ft_memccpy.c\
 		srcs/ft_memchr.c\
 		srcs/ft_memcmp.c\
@@ -54,9 +56,13 @@ SRCS =  srcs/ft_atoi.c\
 		srcs/ft_tolower.c\
 		srcs/ft_toupper.c\
 		srcs/ft_strstr.c\
+		srcs/ft_count_nbr_base.c\
+		srcs/ft_itoa_base.c\
+		srcs/ft_uitoa_base.c\
+		srcs/ft_strcat.c\
 
 GNL	  = gnl/get_next_line.c\
-		gnl/get_next_line_utils.c
+		gnl/get_next_line_utils.c\
 
 BONUS = bonus/ft_lstadd_back_bonus.c\
 		bonus/ft_lstadd_front_bonus.c\
@@ -68,8 +74,7 @@ BONUS = bonus/ft_lstadd_back_bonus.c\
 		bonus/ft_lstnew_bonus.c\
 		bonus/ft_lstsize_bonus.c\
 
-OBJ     =   $(SRCS:.c=.o) $(GNL:.c=.o)
-OBJS    =   $(SRCS:.c=.o) $(BONUS:.c=.o) $(GNL:.c=.o)
+OBJ    =   $(SRCS:.c=.o) $(BONUS:.c=.o) $(GNL:.c=.o)
 
 all: $(NAME)
 
@@ -80,16 +85,12 @@ $(NAME): $(OBJ)
 %.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) $(LFLAGS) -c $< -o $@
 
-bonus: $(OBJS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
-
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
 
 re : fclean all
 
-.PHONY : all clean fclean re bonus
+.PHONY : all clean fclean re
