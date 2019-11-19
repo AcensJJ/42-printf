@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/09 14:08:20 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/18 12:22:23 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/19 15:31:33 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,11 +29,11 @@ static int		ft_verif_flag(char *flag, char verif)
 static int		ft_check_flags(const char *format, va_list args, char *flag)
 {
 	int		i;
-	int		*sign;
+	int		sign;
 	t_bool	*struc;
 
 	struc = NULL;
-	if ((struc = ft_set_struct(struc)) == NULL)
+	if (!(struc = ft_set_struct(struc)))
 		return (-1);
 	i = 1;
 	sign = 0;
@@ -47,8 +47,10 @@ static int		ft_check_flags(const char *format, va_list args, char *flag)
 	else if (format[i] == '.' || format[i] == '*' || format[i] == '-')
 		i += 0;
 	else if (ft_verif_flag(flag, format[i]) == 1)
-		i += ft_no_pre(&format[i], args, sign, struc);
-	i = ft_end_one_check(sign, struc, i);
+		i += ft_no_pre(&format[i], args, &sign, struc);
+	ft_end_one_check(struc);
+	if (sign == -1)
+		return (-1);
 	return (i);
 }
 
@@ -58,7 +60,7 @@ static int		ft_write(const char *format)
 
 	i = ft_strlchr(format, '%');
 	write(1, format, i);
-	return (++i);
+	return (i);
 }
 
 static int		ft_init(const char *format, va_list args, char *flag)
