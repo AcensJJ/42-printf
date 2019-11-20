@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/09 14:08:20 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/19 15:31:33 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/20 17:43:47 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,31 +26,29 @@ static int		ft_verif_flag(char *flag, char verif)
 	return (0);
 }
 
-static int		ft_check_flags(const char *format, va_list args, char *flag)
+static int		ft_check_flags(const char *format, va_list args, char *flag,
+								int *valprintf)
 {
 	int		i;
-	int		sign;
 	t_bool	*struc;
 
 	struc = NULL;
 	if (!(struc = ft_set_struct(struc)))
 		return (-1);
-	i = 1;
-	sign = 0;
+	i = 0;
 	if (format[i] == '%')
 	{
 		write(1, &format[i], 1);
+		*valprintf += 1;
 		i += 1;
 	}
 	else if (format[i] >= '0' && format[i] <= '9')
-		i += 0;
+		i += ft_with_pre(&format[i], args, valprintf, struc);
 	else if (format[i] == '.' || format[i] == '*' || format[i] == '-')
-		i += 0;
+		i += ft_with_pre(&format[i], args, valprintf, struc);
 	else if (ft_verif_flag(flag, format[i]) == 1)
-		i += ft_no_pre(&format[i], args, &sign, struc);
+		i += ft_no_pre(&format[i], args, valprintf, struc);
 	ft_end_one_check(struc);
-	if (sign == -1)
-		return (-1);
 	return (i);
 }
 
@@ -67,33 +65,41 @@ static int		ft_init(const char *format, va_list args, char *flag)
 {
 	int		i;
 	int		j;
+	int		valprintf;
 
 	i = 0;
-	while (format[i] != '\0')
+	j = 0;
+	valprintf = 0;
+	while (format[i] != '\0' && format[i - 1] != '\0')
 	{
+		if (format[i] != '\0')
+		{
+			j += ft_write(&format[i]);
+			i += j;
+			valprintf += j;
+		}
 		if (format[i] == '%')
 		{
-			j = ft_check_flags(&format[i], args, flag);
-			if (j == -1)
+			i++;
+			i += ft_check_flags(&format[i], args, flag, &valprintf);
+			if (valprintf == -1)
 				return (-1);
-			i += j;
 		}
-		i += ft_write(&format[i]);
 	}
-	return (i);
+	return (valprintf);
 }
 
 int				ft_printf(const char *format, ...)
 {
 	va_list	args;
-	int		i;
+	int		valprintf;
 	char	*flag;
 
 	if ((flag = ft_strdup("cspdiuxX")) == NULL)
 		return (-1);
 	va_start(args, format);
-	i = ft_init(format, args, flag);
+	valprintf = ft_init(format, args, flag);
 	va_end(args);
 	free(flag);
-	return (0);
+	return (valprintf);
 }
