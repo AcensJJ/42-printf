@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/21 18:40:31 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/21 19:21:28 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -108,15 +108,7 @@ int			ft_with_pre(const char *format, va_list args, int *valprintf,
 	struc->print == -1 ? struc->print = (int)ft_strlen(ptr) : 0;
 	struc->zero == -1 ? struc->zero = struc->print : 0;
 	struc->space < struc->zero ? struc->space = struc->zero : 0;
-	if (format[i] == 'p' && (ft_strcmp(ptr, "0x0") == 0))
-		ft_dotp_null(valprintf);
-	else if (format[i] != 's')
-		ft_print_pre(valprintf, struc, ptr, format[i]);
-	else
-	{
-		write(1, ptr, struc->print);
-		*valprintf += struc->print;
-	}
+	ft_with_pre_do(format[i], valprintf, ptr, struc);
 	free(ptr);
 	return (++i);
 }
