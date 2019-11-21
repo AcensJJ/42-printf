@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/17 17:03:32 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/20 17:53:16 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/21 16:10:33 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,15 +23,19 @@ static void	ft_print_space(int *valprintf, t_bool *struc)
 	while ((struc->space - struc->zero) != i)
 	{
 		write(1, " ", 1);
-		valprintf++;
+		*valprintf += 1;
 		i++;
 	}
 }
 
-void		ft_print_pre(int *valprintf, t_bool *struc, char *ptr)
+void		ft_print_pre(int *valprintf, t_bool *struc, char *ptr, char format)
 {
-	int i;
+	int		i;
+	char	c;
 
+	c = 0;
+	format == 'c' && ptr[0] == '\0' ? struc->space -= 1 : 0 ;
+	format == 'c' && ptr[0] == '\0' ? struc->print += 1 : 0 ;
 	if (struc->left != 1)
 		ft_print_space(valprintf, struc);
 	i = 0;
@@ -40,12 +44,13 @@ void		ft_print_pre(int *valprintf, t_bool *struc, char *ptr)
 		while ((struc->zero - (int)ft_strlen(ptr)) != i)
 		{
 			write(1, "0", 1);
-			valprintf++;
+			*valprintf += 1;
 			i++;
 		}
 	}
+	format == 'c' && ptr[0] == '\0' ? write(1, &c, 1) :
 	write(1, ptr, struc->print);
-	valprintf += struc->print;
+	*valprintf += struc->print;
 	if (struc->left == 1)
 		ft_print_space(valprintf, struc);
 }

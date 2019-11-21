@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/20 17:46:52 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/21 16:51:23 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,21 +26,20 @@ static void	ft_with_dot(const char *format, va_list args, t_bool *struc)
 		i++;
 	}
 	if (format[i] >= '0' && format[i] <= '9')
+		struc->print = ft_atoi(&format[i]);
+	while (format[i] >= '0' && format[i] <= '9')
+		i++;
+	if (format[i] == '*')
 	{
-		struc->space = ft_atoi(&format[i]);
-		while (format[i] >= '0' && format[i] <= '9')
-			i++;
+		struc->print = va_arg(args, int);
+		i++;
 	}
-	else if (format[i++] == '*')
-		struc->space = va_arg(args, int);
 	i++;
 	if (format[i] >= '0' && format[i] <= '9')
-	{
 		struc->zero = ft_atoi(&format[i]);
-		while (format[i] >= '0' && format[i] <= '9')
-			i++;
-	}
-	else if (format[i++] == '*')
+	while (format[i] >= '0' && format[i] <= '9')
+		i++;
+	if (format[i] == '*')
 		struc->zero = va_arg(args, int);
 }
 
@@ -56,7 +55,7 @@ static void	ft_no_dot(const char *format, va_list args, t_bool *struc)
 	}
 	if (format[i] >= '1' && format[i] <= '9')
 	{
-		struc->space = ft_atoi(&format[i]);
+		struc->print = ft_atoi(&format[i]);
 		while (format[i] >= '0' && format[i] <= '9')
 			i++;
 	}
@@ -66,8 +65,8 @@ static void	ft_no_dot(const char *format, va_list args, t_bool *struc)
 		while (format[i] >= '0' && format[i] <= '9')
 			i++;
 	}
-	else if (format[i++] == '*')
-		struc->space = va_arg(args, int);
+	else if (format[i] == '*')
+		struc->print = va_arg(args, int);
 }
 
 static int	ft_check_dot(const char *format, va_list args, t_bool *struc)
@@ -102,14 +101,24 @@ int			ft_with_pre(const char *format, va_list args, int *valprintf,
 	ptr = ft_config_flags(args, format[i], valprintf, struc);
 	if (ptr == NULL)
 		return (-1);
-	format[i] == 's' ? struc->zero = 0 : 0;
+	format[i] == 's' && struc->print == -1 && struc->zero != -1 ?
+	struc->print = struc->zero : 0;
+	format[i] != 's' ? struc->space = struc->print : 0;
 	format[i] != 's' ? struc->print = (int)ft_strlen(ptr) : 0;
 	struc->print == -1 ? struc->print = (int)ft_strlen(ptr) : 0;
-	ft_print_pre(valprintf, struc, ptr);
+	struc->zero == -1 ? struc->zero = struc->print : 0;
+	struc->space < struc->zero ? struc->space = struc->zero : 0;
 	if (format[i] != 's')
+	{
+		ft_print_pre(valprintf, struc, ptr, format[i]);
 		free(ptr);
-	i++;
-	return (i);
+	}
+	else
+	{
+		write(1, ptr, struc->print);
+		*valprintf += struc->print;
+	}
+	return (++i);
 }
 
 int			ft_no_pre(const char *format, va_list args, int *valprintf,
@@ -117,12 +126,21 @@ int			ft_no_pre(const char *format, va_list args, int *valprintf,
 {
 	char	*ptr;
 	int		i;
+	char	c;
 
+	c = 0;
 	ptr = ft_config_flags(args, format[0], valprintf, struc);
-	if (ptr != NULL)
+	if (ptr != NULL || format[0] == 'c')
 	{
-		i = ft_strlen(ptr);
-		write(1, ptr, i);
+		i = 1;
+		if (format[0] == 'c' && ptr[0] == 0)
+			write(1, &c, 1);
+		else
+		{
+			i = ft_strlen(ptr);
+			write(1, ptr, i);
+		}
+		*valprintf += i;
 		if (format[0] != 's')
 			free(ptr);
 		return (1);

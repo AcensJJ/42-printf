@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/09 14:08:20 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/20 17:43:47 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/21 17:04:51 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,16 +68,10 @@ static int		ft_init(const char *format, va_list args, char *flag)
 	int		valprintf;
 
 	i = 0;
-	j = 0;
 	valprintf = 0;
-	while (format[i] != '\0' && format[i - 1] != '\0')
+	while (format[i] != '\0')
 	{
-		if (format[i] != '\0')
-		{
-			j += ft_write(&format[i]);
-			i += j;
-			valprintf += j;
-		}
+		j = 0;
 		if (format[i] == '%')
 		{
 			i++;
@@ -85,6 +79,10 @@ static int		ft_init(const char *format, va_list args, char *flag)
 			if (valprintf == -1)
 				return (-1);
 		}
+		if (format[i] != '\0')
+			j += ft_write(&format[i]);
+		i += j;
+		valprintf += j;
 	}
 	return (valprintf);
 }
