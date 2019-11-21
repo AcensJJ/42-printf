@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 15:11:54 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/21 12:37:58 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/21 18:31:36 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,9 +48,9 @@ static char		*ft_do_flag3(va_list args, int *valprintf, t_bool *struc)
 			if (ptr != NULL)
 				free(ptr);
 		}
-		free(struc->arg);
-		struc->arg = NULL;
 	}
+	free(struc->arg);
+	struc->arg = NULL;
 	return (str);
 }
 
@@ -68,16 +68,14 @@ static char		*ft_do_flag2(va_list args, int *valprintf, t_bool *struc)
 			str[0] = va_arg(args, int);
 			str[1] = '\0';
 		}
-		free(struc->arg);
-		struc->arg = NULL;
 	}
 	else if (struc->arg[0] == 'u')
 	{
 		if (!(str = ft_uitoa(va_arg(args, unsigned int))))
 			*valprintf = -1;
-		free(struc->arg);
-		struc->arg = NULL;
 	}
+	free(struc->arg);
+	struc->arg = NULL;
 	return (str);
 }
 
@@ -90,23 +88,21 @@ static char		*ft_do_flag(va_list args, int *valprintf, t_bool *struc)
 	{
 		if (!(str = ft_itoa(va_arg(args, int))))
 			*valprintf = -1;
-		free(struc->arg);
-		struc->arg = NULL;
 	}
 	else if (struc->arg[0] == 'x')
 	{
-		if (!(str = ft_itoa_base(va_arg(args, int), "0123456789abcdef")))
+		if (!(str = ft_itoa_base(va_arg(args, unsigned int),
+								"0123456789abcdef")))
 			*valprintf = -1;
-		free(struc->arg);
-		struc->arg = NULL;
 	}
 	else if (struc->arg[0] == 'X')
 	{
-		if (!(str = ft_itoa_base(va_arg(args, int), "0123456789ABCDEF")))
+		if (!(str = ft_itoa_base(va_arg(args, unsigned int),
+								"0123456789ABCDEF")))
 			*valprintf = -1;
-		free(struc->arg);
-		struc->arg = NULL;
 	}
+	free(struc->arg);
+	struc->arg = NULL;
 	return (str);
 }
 

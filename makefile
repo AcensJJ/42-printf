@@ -6,7 +6,7 @@
 #    By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/18 15:41:28 by jacens       #+#   ##    ##    #+#        #
-#    Updated: 2019/11/19 13:30:27 by jacens      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/21 18:45:53 by jacens      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -22,6 +22,7 @@ LFLAGS  =   -I $(HEADER)
 
 SRCS    =	srcs/ft_printf.c\
 			srcs/ft_printf_outils.c\
+			srcs/ft_printf_outils2.c\
 			srcs/ft_flags_printf.c\
 			srcs/ft_pre_printf.c\
 			srcs/ft_check_va.c\

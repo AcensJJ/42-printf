@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_check_va.c                                    .::    .:/ .      .::   */
+/*   ft_printf_outils2.c                              .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/11/19 10:12:40 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/21 17:30:32 by jacens      ###    #+. /#+    ###.fr     */
+/*   Created: 2019/11/21 18:42:45 by jacens       #+#   ##    ##    #+#       */
+/*   Updated: 2019/11/21 18:51:33 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,18 +15,21 @@
 #include "../libft/include/get_next_line.h"
 #include "../libft/include/libft.h"
 
-char	*ft_va_null_char(va_list args)
+void	ft_print_zero(int *valprintf, t_bool *struc, char *ptr)
 {
-	char *ptr;
+	int		i;
 
-	ptr = va_arg(args, char *);
-	if (!ptr)
+	i = 0;
+	if (ptr[0] == '-')
 	{
-		if (!(ptr = ft_strdup("(null)")))
-			return (NULL);
-		return (ptr);
+		write(1, "-", 1);
+		ptr++;
+		struc->print -= 1;
 	}
-	if (!(ptr = ft_strdup(ptr)))
-		return (NULL);
-	return (ptr);
+	while ((struc->zero - (int)ft_strlen(ptr)) != i)
+	{
+		write(1, "0", 1);
+		*valprintf += 1;
+		i++;
+	}
 }

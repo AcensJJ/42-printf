@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/17 17:03:32 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/21 16:10:33 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/21 18:52:40 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,6 +14,12 @@
 #include "ft_printf.h"
 #include "../libft/include/get_next_line.h"
 #include "../libft/include/libft.h"
+
+void		ft_dotp_null(int *valprintf)
+{
+	write(1, "0x", 2);
+	*valprintf += 2;
+}
 
 static void	ft_print_space(int *valprintf, t_bool *struc)
 {
@@ -30,23 +36,20 @@ static void	ft_print_space(int *valprintf, t_bool *struc)
 
 void		ft_print_pre(int *valprintf, t_bool *struc, char *ptr, char format)
 {
-	int		i;
 	char	c;
 
 	c = 0;
-	format == 'c' && ptr[0] == '\0' ? struc->space -= 1 : 0 ;
-	format == 'c' && ptr[0] == '\0' ? struc->print += 1 : 0 ;
+	format == 'c' && ptr[0] == '\0' ? struc->space -= 1 : 0;
+	format == 'c' && ptr[0] == '\0' ? struc->print += 1 : 0;
+	struc->left != 1 && ptr[0] == '-' ? struc->space -= 1 : 0;
+	struc->left != 1 && ptr[0] == '-' ? *valprintf += 1 : 0;
 	if (struc->left != 1)
 		ft_print_space(valprintf, struc);
-	i = 0;
-	if (struc->zero != 1)
+	if (struc->zero != 1 && format != 'x' && format != 'X')
 	{
-		while ((struc->zero - (int)ft_strlen(ptr)) != i)
-		{
-			write(1, "0", 1);
-			*valprintf += 1;
-			i++;
-		}
+		ft_print_zero(valprintf, struc, ptr);
+		if (ptr[0] == '-')
+			ptr++;
 	}
 	format == 'c' && ptr[0] == '\0' ? write(1, &c, 1) :
 	write(1, ptr, struc->print);

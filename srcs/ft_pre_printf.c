@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/21 16:51:23 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/21 18:40:31 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -87,6 +87,7 @@ static int	ft_check_dot(const char *format, va_list args, t_bool *struc)
 		ft_with_dot(format, args, struc);
 	else
 		ft_no_dot(format, args, struc);
+	j > 0 && struc->print == -1 ? struc->print = 0 : 0;
 	return (i);
 }
 
@@ -96,7 +97,6 @@ int			ft_with_pre(const char *format, va_list args, int *valprintf,
 	char	*ptr;
 	int		i;
 
-	i = 0;
 	i = ft_check_dot(format, args, struc);
 	ptr = ft_config_flags(args, format[i], valprintf, struc);
 	if (ptr == NULL)
@@ -108,16 +108,16 @@ int			ft_with_pre(const char *format, va_list args, int *valprintf,
 	struc->print == -1 ? struc->print = (int)ft_strlen(ptr) : 0;
 	struc->zero == -1 ? struc->zero = struc->print : 0;
 	struc->space < struc->zero ? struc->space = struc->zero : 0;
-	if (format[i] != 's')
-	{
+	if (format[i] == 'p' && (ft_strcmp(ptr, "0x0") == 0))
+		ft_dotp_null(valprintf);
+	else if (format[i] != 's')
 		ft_print_pre(valprintf, struc, ptr, format[i]);
-		free(ptr);
-	}
 	else
 	{
 		write(1, ptr, struc->print);
 		*valprintf += struc->print;
 	}
+	free(ptr);
 	return (++i);
 }
 
@@ -141,8 +141,7 @@ int			ft_no_pre(const char *format, va_list args, int *valprintf,
 			write(1, ptr, i);
 		}
 		*valprintf += i;
-		if (format[0] != 's')
-			free(ptr);
+		free(ptr);
 		return (1);
 	}
 	return (-1);

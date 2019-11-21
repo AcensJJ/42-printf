@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 14:39:52 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/21 15:55:36 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/21 18:47:04 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,4 +41,6 @@ char				*ft_config_flags(va_list args, char format, int *valprintf,
 char				*ft_va_null_char(va_list args);
 void				ft_print_pre(int *valprintf, t_bool *struc, char *ptr,
 								char format);
+void				ft_dotp_null(int *valprintf);
+void				ft_print_zero(int *valprintf, t_bool *struc, char *ptr);
 #endif

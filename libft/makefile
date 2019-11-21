@@ -6,7 +6,7 @@
 #    By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/18 15:41:28 by jacens       #+#   ##    ##    #+#        #
-#    Updated: 2019/11/20 16:40:03 by jacens      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/21 18:12:29 by jacens      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -58,6 +58,7 @@ SRCS =  srcs/ft_atoi.c\
 		srcs/ft_tolower.c\
 		srcs/ft_toupper.c\
 		srcs/ft_strstr.c\
+		srcs/ft_strcmp.c\
 		srcs/ft_count_nbr_base.c\
 		srcs/ft_itoa_base.c\
 		srcs/ft_uitoa_base.c\
