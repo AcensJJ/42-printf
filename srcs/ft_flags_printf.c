@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 15:11:54 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/22 14:30:58 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/22 14:40:19 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -118,7 +118,8 @@ char			*ft_config_flags(va_list args, char format, int *valprintf,
 		return (NULL);
 	}
 	if (format == '%')
-		str = ft_strdup("%");
+		if (!(str = ft_strdup("%")))
+			return (NULL);
 	if (format == 'd' || format == 'i' || format == 'x' || format == 'X')
 		str = ft_do_flag(args, valprintf, struc);
 	if (format == 'c' || format == 'u')
@@ -126,8 +127,9 @@ char			*ft_config_flags(va_list args, char format, int *valprintf,
 	if (format == 'p')
 		str = ft_do_flag3(args, valprintf, struc);
 	else if (format == 's')
-	{
 		str = ft_do_flag4(args, valprintf, struc);
+	if (format == 's' || format == '%')
+	{
 		free(struc->arg);
 		struc->arg = NULL;
 	}
