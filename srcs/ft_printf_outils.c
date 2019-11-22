@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/17 17:03:32 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/21 19:19:41 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/22 13:36:40 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 #include "../libft/include/get_next_line.h"
 #include "../libft/include/libft.h"
 
-static void	ft_print_space(int *valprintf, t_bool *struc)
+void		ft_print_space(int *valprintf, t_bool *struc)
 {
 	int i;
 
@@ -33,12 +33,11 @@ void		ft_print_pre(int *valprintf, t_bool *struc, char *ptr, char format)
 	char	c;
 
 	c = 0;
-	format == 'c' && ptr[0] == '\0' ? struc->space -= 1 : 0;
-	format == 'c' && ptr[0] == '\0' ? struc->print += 1 : 0;
-	struc->left != 1 && ptr[0] == '-' ? struc->space -= 1 : 0;
-	struc->left != 1 && ptr[0] == '-' ? *valprintf += 1 : 0;
 	if (struc->left != 1)
+	{
+		format == 'd' && ptr[0] == '-' ? *valprintf -= 1 : 0;
 		ft_print_space(valprintf, struc);
+	}
 	if (struc->zero != 1 && format != 'x' && format != 'X')
 	{
 		ft_print_zero(valprintf, struc, ptr);

@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/21 19:21:28 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/22 13:50:02 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -101,14 +101,10 @@ int			ft_with_pre(const char *format, va_list args, int *valprintf,
 	ptr = ft_config_flags(args, format[i], valprintf, struc);
 	if (ptr == NULL)
 		return (-1);
-	format[i] == 's' && struc->print == -1 && struc->zero != -1 ?
-	struc->print = struc->zero : 0;
-	format[i] != 's' ? struc->space = struc->print : 0;
-	format[i] != 's' ? struc->print = (int)ft_strlen(ptr) : 0;
-	struc->print == -1 ? struc->print = (int)ft_strlen(ptr) : 0;
-	struc->zero == -1 ? struc->zero = struc->print : 0;
-	struc->space < struc->zero ? struc->space = struc->zero : 0;
-	ft_with_pre_do(format[i], valprintf, ptr, struc);
+	ft_config_stru1(struc, ptr, format[i]);
+	ft_config_stru2(valprintf, struc, ptr, format[i]);
+	printf("p = |%d|, z = |%d|, s = |%d|, l = |%d|\n", struc->print, struc->zero, struc->space, struc->left);
+	// ft_with_pre_do(format[i], valprintf, ptr, struc);
 	free(ptr);
 	return (++i);
 }

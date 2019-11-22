@@ -6,7 +6,7 @@
 #    By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/18 15:41:28 by jacens       #+#   ##    ##    #+#        #
-#    Updated: 2019/11/21 18:12:29 by jacens      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/22 13:47:27 by jacens      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -19,6 +19,7 @@ HEADER =    include/
 LFLAGS  =   -I $(HEADER)
 
 SRCS =  srcs/ft_atoi.c\
+		srcs/ft_atoi_base.c\
 		srcs/ft_bzero.c\
 		srcs/ft_calloc.c\
 		srcs/ft_isalnum.c\
