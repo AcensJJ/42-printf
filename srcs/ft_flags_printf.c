@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 15:11:54 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/22 14:18:17 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/22 14:30:58 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -118,7 +118,7 @@ char			*ft_config_flags(va_list args, char format, int *valprintf,
 		return (NULL);
 	}
 	if (format == '%')
-	str = ft_strdup("%");
+		str = ft_strdup("%");
 	if (format == 'd' || format == 'i' || format == 'x' || format == 'X')
 		str = ft_do_flag(args, valprintf, struc);
 	if (format == 'c' || format == 'u')
