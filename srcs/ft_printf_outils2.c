@@ -39,7 +39,6 @@ void	ft_print_zero(int *valprintf, t_bool *struc, char *ptr)
 		ptr++;
 		struc->print -= 1;
 		*valprintf += 1;
-		struc->space -= 1;
 	}
 	while ((struc->zero > i)
 	{
@@ -65,9 +64,9 @@ void	ft_with_pre_do(char format, int *valprintf, char *ptr,
 		ft_print_pre(valprintf, struc, ptr, format);
 	else
 	{
-		if (struc->print < struc->space)
-			ft_print_space(valprintf, struc);
+		struc->left != 1 ? ft_print_space(valprintf, struc) : 0;
 		write(1, ptr, struc->print);
 		*valprintf += struc->print;
+		struc->left == 1 ? ft_print_space(valprintf, struc) : 0;
 	}
 }
