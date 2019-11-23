@@ -32,6 +32,8 @@ void		ft_config_stru(int *valprintf, t_bool *struc, char *ptr,
 	struc->space -= (int)ft_strlen(ptr) : 0;
 	format != 's' && struc->print == -1 ? 
 	struc->print = (int)ft_strlen(ptr) : 0;
+	format == 'c' && ptr[0] == '\0' ? struc->space -= 1 : 0;
+ 	format == 'c' && ptr[0] == '\0' ? *valprintf += 1 : 0;
 	struc->space -= (struc->print + struc->zero);
 }
 
