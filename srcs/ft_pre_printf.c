@@ -26,12 +26,12 @@ static void	ft_with_dot(const char *format, va_list args, t_bool *struc)
 		i++;
 	}
 	if (format[i] >= '0' && format[i] <= '9')
-		struc->print = ft_atoi(&format[i]);
+		struc->space = ft_atoi(&format[i]);
 	while (format[i] >= '0' && format[i] <= '9')
 		i++;
 	if (format[i] == '*')
 	{
-		struc->print = va_arg(args, int);
+		struc->space = va_arg(args, int);
 		i++;
 	}
 	i++;
@@ -55,7 +55,7 @@ static void	ft_no_dot(const char *format, va_list args, t_bool *struc)
 	}
 	if (format[i] >= '1' && format[i] <= '9')
 	{
-		struc->print = ft_atoi(&format[i]);
+		struc->space = ft_atoi(&format[i]);
 		while (format[i] >= '0' && format[i] <= '9')
 			i++;
 	}
@@ -66,7 +66,7 @@ static void	ft_no_dot(const char *format, va_list args, t_bool *struc)
 			i++;
 	}
 	else if (format[i] == '*')
-		struc->print = va_arg(args, int);
+		struc->space = va_arg(args, int);
 }
 
 static int	ft_check_dot(const char *format, va_list args, t_bool *struc)
@@ -101,8 +101,7 @@ int			ft_with_pre(const char *format, va_list args, int *valprintf,
 	ptr = ft_config_flags(args, format[i], valprintf, struc);
 	if (ptr == NULL)
 		return (-1);
-	ft_config_stru1(struc, ptr, format[i]);
-	ft_config_stru2(valprintf, struc, ptr, format[i]);
+	ft_config_stru(valprintf, struc, ptr, format[i]);
 	ft_with_pre_do(format[i], valprintf, ptr, struc);
 	free(ptr);
 	return (++i);

@@ -15,19 +15,6 @@
 #include "../libft/include/get_next_line.h"
 #include "../libft/include/libft.h"
 
-void		ft_print_space(int *valprintf, t_bool *struc)
-{
-	int i;
-
-	i = 0;
-	while ((struc->space - struc->zero) != i)
-	{
-		write(1, " ", 1);
-		*valprintf += 1;
-		i++;
-	}
-}
-
 void		ft_print_pre(int *valprintf, t_bool *struc, char *ptr, char format)
 {
 	char	c;
@@ -62,9 +49,9 @@ t_bool		*ft_set_struct(t_bool *struc)
 {
 	if (!(struc = malloc(sizeof(*struc))))
 		return (NULL);
-	struc->space = -1;
-	struc->zero = -1;
-	struc->left = -1;
+	struc->space = 0;
+	struc->zero = 0;
+	struc->left = 0;
 	struc->print = -1;
 	struc->arg = NULL;
 	return (struc);

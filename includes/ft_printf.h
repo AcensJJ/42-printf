@@ -45,8 +45,6 @@ void				ft_print_zero(int *valprintf, t_bool *struc, char *ptr);
 void				ft_with_pre_do(char format, int *valprintf, char *ptr,
 								t_bool *struc);
 void				ft_print_space(int *valprintf, t_bool *struc);
-void				ft_config_stru1(t_bool *struc, char *ptr,
-								char format);
-void				ft_config_stru2(int *valprintf, t_bool *struc, char *ptr,
+void				ft_config_stru(int *valprintf, t_bool *struc, char *ptr,
 									char format);
 #endif
