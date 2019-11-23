@@ -41,7 +41,7 @@ char				*ft_config_flags(va_list args, char format, int *valprintf,
 char				*ft_va_null_char(va_list args);
 void				ft_print_pre(int *valprintf, t_bool *struc, char *ptr,
 								char format);
-void				ft_print_zero(int *valprintf, t_bool *struc, char *ptr);
+void				ft_print_zero(int *valprintf, t_bool *struc, char *ptr)
 void				ft_with_pre_do(char format, int *valprintf, char *ptr,
 								t_bool *struc);
 void				ft_print_space(int *valprintf, t_bool *struc);

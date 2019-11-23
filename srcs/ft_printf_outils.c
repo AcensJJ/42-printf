@@ -20,12 +20,8 @@ void		ft_print_pre(int *valprintf, t_bool *struc, char *ptr, char format)
 	char	c;
 
 	c = 0;
-	if (struc->left != 1)
-	{
-		format == 'd' && ptr[0] == '-' ? *valprintf -= 1 : 0;
-		ft_print_space(valprintf, struc);
-	}
-	if (struc->zero != 1 && format != 'x' && format != 'X')
+	struc->left != 1 ? ft_print_space(valprintf, struc) : 0;
+	if (struc->zero > 0 && format != 's')
 	{
 		ft_print_zero(valprintf, struc, ptr);
 		if (ptr[0] == '-')

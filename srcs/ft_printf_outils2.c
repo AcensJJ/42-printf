@@ -33,7 +33,7 @@ void	ft_print_zero(int *valprintf, t_bool *struc, char *ptr)
 	int		i;
 
 	i = 0;
-	if (ptr[0] == '-')
+	if (ptr[0] == '-' && format != 's')
 	{
 		write(1, "-", 1);
 		ptr++;

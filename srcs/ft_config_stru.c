@@ -21,12 +21,17 @@ void		ft_config_stru(int *valprintf, t_bool *struc, char *ptr,
 	struc->space < 0 ? struc->left = 1 : 0;
 	struc->space < 0 ? struc->space *= -1: 0;
 	struc->space == 0 && struc->zero == 0 ? struc->print = 0 : 0;
-	format != 's' && struc->print == -1 ? 
-	struc->print = (int)ft_strlen(ptr) : 0;
+	format == 's' && struc->zero > 0 && struc->space == 0 ?
+	struc->space = struc->zero : 0;
+	format == 's' && struc->zero > 0 && struc->space != 0 ?
+	struc->print = struc->zero : 0;
+	format == 's' && struc->zero > 0 ? struc->zero = 0 : 0;
 	format == 's' && struc->space > (int)ft_strlen(ptr) && struc->print != 0 ?
 	struc->print = (int)ft_strlen(ptr) : 0;
 	format == 's' && struc->space > (int)ft_strlen(ptr) && struc->print != 0 ?
 	struc->space -= (int)ft_strlen(ptr) : 0;
+	format != 's' && struc->print == -1 ? 
+	struc->print = (int)ft_strlen(ptr) : 0;
 	struc->space -= (struc->print + struc->zero);
 }
 
