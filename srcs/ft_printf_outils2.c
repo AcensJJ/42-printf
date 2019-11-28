@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/21 18:42:45 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/22 12:41:29 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/28 13:52:16 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 #include "../libft/include/get_next_line.h"
 #include "../libft/include/libft.h"
 
-void		ft_print_space(int *valprintf, t_bool *struc)
+void	ft_print_space(int *valprintf, t_bool *struc)
 {
 	int i;
 
@@ -28,7 +28,7 @@ void		ft_print_space(int *valprintf, t_bool *struc)
 	}
 }
 
-void	ft_print_zero(int *valprintf, t_bool *struc, char *ptr)
+void	ft_print_zero(int *valprintf, t_bool *struc, char *ptr, char format)
 {
 	int		i;
 
@@ -40,7 +40,7 @@ void	ft_print_zero(int *valprintf, t_bool *struc, char *ptr)
 		struc->print -= 1;
 		*valprintf += 1;
 	}
-	while ((struc->zero > i)
+	while ((struc->zero > i))
 	{
 		write(1, "0", 1);
 		*valprintf += 1;
@@ -61,7 +61,10 @@ void	ft_with_pre_do(char format, int *valprintf, char *ptr,
 		;
 	}
 	else if (format != 's')
+	{
+		struc->print == 0 ? struc->print = ft_strlen(ptr) : 0;
 		ft_print_pre(valprintf, struc, ptr, format);
+	}
 	else
 	{
 		struc->left != 1 ? ft_print_space(valprintf, struc) : 0;

@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/17 17:03:32 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/22 13:36:40 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/28 11:35:37 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,7 @@ void		ft_print_pre(int *valprintf, t_bool *struc, char *ptr, char format)
 	struc->left != 1 ? ft_print_space(valprintf, struc) : 0;
 	if (struc->zero > 0 && format != 's')
 	{
-		ft_print_zero(valprintf, struc, ptr);
+		ft_print_zero(valprintf, struc, ptr, format);
 		if (ptr[0] == '-')
 			ptr++;
 	}

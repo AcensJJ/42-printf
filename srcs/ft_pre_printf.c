@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/22 14:02:08 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/28 13:52:32 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -87,7 +87,6 @@ static int	ft_check_dot(const char *format, va_list args, t_bool *struc)
 		ft_with_dot(format, args, struc);
 	else
 		ft_no_dot(format, args, struc);
-	j > 0 && struc->print == -1 ? struc->print = 0 : 0;
 	return (i);
 }
 

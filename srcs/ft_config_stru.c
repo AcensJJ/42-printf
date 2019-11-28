@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/22 13:34:53 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/22 14:26:29 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/28 13:41:44 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,58 +19,21 @@ void		ft_config_stru(int *valprintf, t_bool *struc, char *ptr,
 							char format)
 {
 	struc->space < 0 ? struc->left = 1 : 0;
-	struc->space < 0 ? struc->space *= -1: 0;
+	struc->space < 0 ? struc->space *= -1 : 0;
 	struc->space == 0 && struc->zero == 0 ? struc->print = 0 : 0;
 	format == 's' && struc->zero > 0 && struc->space == 0 ?
 	struc->space = struc->zero : 0;
 	format == 's' && struc->zero > 0 && struc->space != 0 ?
 	struc->print = struc->zero : 0;
+	format != 's' && ptr[0] == '-' ? struc->zero += 1 : 0;
 	format == 's' && struc->zero > 0 ? struc->zero = 0 : 0;
 	format == 's' && struc->space > (int)ft_strlen(ptr) && struc->print != 0 ?
 	struc->print = (int)ft_strlen(ptr) : 0;
-	format == 's' && struc->space > (int)ft_strlen(ptr) && struc->print != 0 ?
-	struc->space -= (int)ft_strlen(ptr) : 0;
-	format != 's' && struc->print == -1 ? 
+	format != 's' && struc->print == -1 ?
 	struc->print = (int)ft_strlen(ptr) : 0;
 	format == 'c' && ptr[0] == '\0' ? struc->space -= 1 : 0;
- 	format == 'c' && ptr[0] == '\0' ? *valprintf += 1 : 0;
+	format == 'c' && ptr[0] == '\0' ? *valprintf += 1 : 0;
+	format != 's' ? struc->zero -= struc->print : 0; 
+	format != 's' && struc->zero < 0 ? struc->zero = 0 : 0;
 	struc->space -= (struc->print + struc->zero);
 }
-
-// void		ft_config_stru1(t_bool *struc, char *ptr, char format)
-// {
-// 	int		notdot;
-
-// 	notdot = 0;
-// 	format == 's' && struc->print == -1 && struc->zero != 0 ?
-// 	struc->print = struc->zero : 0;
-// 	format != 's' ? struc->space = struc->print : 0;
-// 	format == 'd' && ptr[0] == '-' && struc->zero == 0 ? notdot = 1 : 0;
-// 	format != 's' ? struc->print = (int)ft_strlen(ptr) : 0;
-// 	format != 's' &&
-// 	struc->zero < struc->print ? struc->zero = (int)ft_strlen(ptr) : 0;
-// 	(format == 'x' || format == 'X') && struc->zero != 0 &&
-// 	struc->print == -1 ? struc->space = struc->print : 0;
-// 	(format == 'x' || format == 'X') && struc->zero != 0 ?
-// 	struc->zero = struc->print : 0;
-// 	struc->print == -1 ? struc->print = (int)ft_strlen(ptr) : 0;
-// 	struc->zero == 0 ? struc->zero = struc->print : 0;
-// 	struc->space < struc->zero ? struc->space = struc->zero : 0;
-// 	notdot == 1 ? struc->zero -= 1 : 0;
-// }
-
-// void		ft_config_stru2(int *valprintf, t_bool *struc, char *ptr,
-// 							char format)
-// {
-// 	format == 'c' && ptr[0] == '\0' ? struc->space -= 1 : 0;
-// 	format == 'c' && ptr[0] == '\0' ? struc->print += 1 : 0;
-// 	struc->left != 1 && ptr[0] == '-' ? struc->space -= 1 : 0;
-// 	struc->left != 1 && ptr[0] == '-' ? *valprintf += 1 : 0;
-// 	format == 's' ? struc->zero = 0 : 0;
-// 	format == 's' && struc->print == 0 && struc->space > 0 ?
-// 	struc->print = struc->space : 0;
-// 	format == 's' && struc->print > (int)ft_strlen(ptr) ?
-// 	struc->space -= (int)ft_strlen(ptr) : 0;
-// 	format == 's' && struc->print > (int)ft_strlen(ptr) ?
-// 	struc->print = (int)ft_strlen(ptr) : 0;
-// }
