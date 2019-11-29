@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 14:39:52 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/29 18:43:57 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/29 21:21:23 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,5 +64,5 @@ void				ft_cas_d_6(t_bool *struc, char *ptr);
 void				ft_cas_d_7(t_bool *struc, char *ptr);
 void				ft_cas_d_8(t_bool *struc, char *ptr);
 void				ft_cas_d_9(t_bool *struc, char *ptr);
-
+void				ft_cas_d_10(t_bool *struc, char *ptr);
 #endif

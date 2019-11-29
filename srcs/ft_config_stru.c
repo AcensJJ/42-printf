@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/22 13:34:53 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/29 18:46:40 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/29 22:02:20 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -89,6 +89,12 @@ void		ft_config_stru4(t_bool *struc, char *ptr, int *valprintf,
 {
 	if (struc->space == 0 && struc->zero == 0 && struc->print < 0
 	&& (ft_strcmp(ptr, "0") == 0) && format == 'i' && format == 'd')
+	{
+		write(1, "0", 1);
+		*valprintf += 1;
+	}
+	else if (struc->space == 0 && struc->zero == 0 && struc->print == -1
+	&& (ft_strcmp(ptr, "0") == 0) && struc->dot == 0)
 	{
 		write(1, "0", 1);
 		*valprintf += 1;
