@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/29 17:09:12 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/29 18:45:53 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@ static void	ft_with_dot(const char *format, va_list args, t_bool *struc)
 	int i;
 
 	i = 0;
-	if (format[i] == '-')
+	while (format[i] == '-')
 	{
 		struc->left = 1;
 		i++;
@@ -48,7 +48,7 @@ static void	ft_no_dot(const char *format, va_list args, t_bool *struc)
 	int i;
 
 	i = 0;
-	if (format[i] == '-')
+	while (format[i] == '-')
 	{
 		struc->left = 1;
 		i++;
@@ -103,10 +103,11 @@ int			ft_with_pre(const char *format, va_list args, int *valprintf,
 	ptr = ft_config_flags(args, format[i], valprintf, struc);
 	if (ptr == NULL)
 		return (-1);
-	format[i] == 'c' || format[i] == 'p' || format[i] == 'u' || format[i]
+	format[i] == 'c' || format[i] == 'p' || format[i]
 	== '%' ? ft_config_stru3(valprintf, struc, ptr, format[i]) : 0;
 	format[i] == 'd' || format[i] == 'i' || format[i] == 'x' ||
-	format[i] == 'X' ? ft_config_stru4(struc, ptr, valprintf, format[i]) : 0;
+	format[i] == 'X' || format[i] == 'u' ?
+	ft_config_stru4(struc, ptr, valprintf, format[i]) : 0;
 	struc->dot == 1 && format[i] == 's' ?
 	ft_config_stru(struc, ptr) : 0;
 	struc->dot == 0 && format[i] == 's' ?

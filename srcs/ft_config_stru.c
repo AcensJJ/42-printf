@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/22 13:34:53 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/29 16:26:22 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/29 18:46:40 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -84,95 +84,23 @@ void		ft_config_stru3(int *valprintf, t_bool *struc, char *ptr,
 	}
 }
 
-void		ft_config_stru4(t_bool *struc, char *ptr, int *valprintf, char format)
+void		ft_config_stru4(t_bool *struc, char *ptr, int *valprintf,
+							char format)
 {
-	if (struc->space == 0 && struc->zero == 0 && struc->print < 0 && (ft_strcmp(ptr, "0") == 0) && format == 'i' && format == 'd')
+	if (struc->space == 0 && struc->zero == 0 && struc->print < 0
+	&& (ft_strcmp(ptr, "0") == 0) && format == 'i' && format == 'd')
 	{
 		write(1, "0", 1);
 		*valprintf += 1;
 	}
-	else if (struc->space > 0 && struc->zero == 0 && (ft_strcmp(ptr, "0") == 0))
+	else if (struc->space == 0 && struc->zero == 0 && struc->print == -1
+	&& (ft_strcmp(ptr, "0") == 0))
 	{
-		struc->space < 0 ? struc->left = 1 : 0;
-		struc->space < 0 ? struc->space *= -1 : 0;
+		struc->left = 0;
 		struc->print = 0;
+		struc->space = -1;
+		struc->zero = 0;
 	}
-	else if (struc->space < 0 && struc->zero == 0 && (ft_strcmp(ptr, "0") == 0))
-	{
-		struc->space < 0 ? struc->left = 1 : 0;
-		struc->space < 0 ? struc->space *= -1 : 0;
-		struc->print = 0;
-	}
-	else if (struc->space == 0 && struc->zero == 0 && (ft_strcmp(ptr, "0") == 0))
-	{
-		struc->space < 0 ? struc->left = 1 : 0;
-		struc->space < 0 ? struc->space *= -1 : 0;
-	}
-	else if (struc->zero < -1 && struc->space == 0)
-	{
-		struc->space < 0 ? struc->left = 1 : 0;
-		struc->space < 0 ? struc->space *= -1 : 0;
-		struc->zero < 0 && struc->print < 0 ? struc->print = 0 : 0;
-		struc->zero < 0 ? struc->zero = 0 : 0;
-		ptr[0] == '-' ? struc->zero += 1 : 0;
-		struc->print = (int)ft_strlen(ptr);
-		struc->zero -= struc->print;
-		struc->zero < 0 ? struc->zero = 0 : 0;
-		struc->space -= (struc->print + struc->zero);
-		if (struc->print == 0 && struc->space != -1)
-		{
-			struc->space -= ft_strlen(ptr);
-			struc->print = ft_strlen(ptr);
-		}
-	}
-	else if (struc->zero == -1 && struc->space == 0 && struc->print == -1)
-	{
-		struc->space < 0 ? struc->left = 1 : 0;
-		struc->space < 0 ? struc->space *= -1 : 0;
-		struc->zero < 0 && struc->print < 0 ? struc->print = 0 : 0;
-		struc->zero < 0 ? struc->zero = 0 : 0;
-		ptr[0] == '-' ? struc->zero += 1 : 0;
-		struc->print == -1 ? struc->print = (int)ft_strlen(ptr) : 0;
-		struc->zero -= struc->print;
-		struc->zero < 0 ? struc->zero = 0 : 0;
-		struc->space -= (struc->print + struc->zero);
-		if (struc->print == 0 && struc->space != -1)
-		{
-			struc->space -= ft_strlen(ptr);
-			struc->print = ft_strlen(ptr);
-		}
-	}
-	else if (struc->space > 0 && struc->zero == -1 && ptr[0] == '-')
-	{
-		struc->space < 0 ? struc->left = 1 : 0;
-		struc->space < 0 ? struc->space *= -1 : 0;
-		struc->zero < 0 && struc->print < 0 ? struc->print = 0 : 0;
-		struc->zero < 0 ? struc->zero = 0 : 0;
-		struc->print == -1 ? struc->print = (int)ft_strlen(ptr) : 0;
-		struc->zero -= struc->print; 
-		struc->zero < 0 ? struc->zero = 0 : 0;
-		struc->space -= (struc->print + struc->zero);
-		if (struc->print == 0 && struc->space != -1)
-		{
-			struc->space -= ft_strlen(ptr);
-			struc->print = ft_strlen(ptr);
-		}
-	}
-	else if (!(struc->space == 0 && struc->zero == 0 && (ft_strcmp(ptr, "0") == 0)))
-	{
-		struc->space < 0 ? struc->left = 1 : 0;
-		struc->space < 0 ? struc->space *= -1 : 0;
-		struc->zero < 0 && struc->print < 0 ? struc->print = 0 : 0;
-		struc->zero < 0 ? struc->zero = 0 : 0;
-		ptr[0] == '-' ? struc->zero += 1 : 0;
-		struc->print == -1 ? struc->print = (int)ft_strlen(ptr) : 0;
-		struc->zero -= struc->print; 
-		struc->zero < 0 ? struc->zero = 0 : 0;
-		struc->space -= (struc->print + struc->zero);
-		if (struc->print == 0 && struc->space != -1)
-		{
-			struc->space -= ft_strlen(ptr);
-			struc->print = ft_strlen(ptr);
-		}
-	}
+	else
+		ft_cas_d_1(struc, ptr);
 }
