@@ -6,7 +6,7 @@
 #    By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/18 15:41:28 by jacens       #+#   ##    ##    #+#        #
-#    Updated: 2019/11/22 13:38:13 by jacens      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/29 17:14:21 by jacens      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -27,6 +27,7 @@ SRCS    =	srcs/ft_printf.c\
 			srcs/ft_pre_printf.c\
 			srcs/ft_config_stru.c\
 			srcs/ft_check_va.c\
+			srcs/ft_pre_cas_d.c\
 
 OBJ     =   $(SRCS:.c=.o)
 

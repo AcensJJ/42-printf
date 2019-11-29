@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_check_va.c                                    .::    .:/ .      .::   */
+/*   ft_pre_cas_d.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/11/19 10:12:40 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/28 15:46:27 by jacens      ###    #+. /#+    ###.fr     */
+/*   Created: 2019/11/29 17:12:35 by jacens       #+#   ##    ##    #+#       */
+/*   Updated: 2019/11/29 17:14:02 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,28 +15,27 @@
 #include "../libft/include/get_next_line.h"
 #include "../libft/include/libft.h"
 
-char	*ft_va_null_char(va_list args)
+void	ft_cas_d_1()
 {
-	char *ptr;
 
-	ptr = va_arg(args, char *);
-	if (!ptr)
-	{
-		if (!(ptr = ft_strdup("(null)")))
-			return (NULL);
-		return (ptr);
-	}
-	if (!(ptr = ft_strdup(ptr)))
-		return (NULL);
-	return (ptr);
 }
 
-int		ft_va_null_int(va_list args, t_bool *struc)
+void	ft_cas_d_2()
 {
-	int i;
+	
+}
 
-	i = va_arg(args, int);
-	if (i == 0)
-		struc->intnull = 1;
-	return (i);
+void	ft_cas_d_3()
+{
+	
+}
+
+void	ft_cas_d_4()
+{
+	
+}
+
+void	ft_cas_d_5()
+{
+	
 }

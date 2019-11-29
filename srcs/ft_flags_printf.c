@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 15:11:54 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/22 14:40:19 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/28 15:46:31 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -86,7 +86,7 @@ static char		*ft_do_flag(va_list args, int *valprintf, t_bool *struc)
 	str = NULL;
 	if (struc->arg[0] == 'd' || struc->arg[0] == 'i')
 	{
-		if (!(str = ft_itoa(va_arg(args, int))))
+		if (!(str = ft_itoa(ft_va_null_int(args, struc))))
 			*valprintf = -1;
 	}
 	else if (struc->arg[0] == 'x')

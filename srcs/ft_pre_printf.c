@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/28 13:52:32 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/29 17:09:12 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -84,7 +84,10 @@ static int	ft_check_dot(const char *format, va_list args, t_bool *struc)
 		i++;
 	}
 	if (j > 0)
+	{
+		struc->dot = 1;
 		ft_with_dot(format, args, struc);
+	}
 	else
 		ft_no_dot(format, args, struc);
 	return (i);
@@ -100,7 +103,14 @@ int			ft_with_pre(const char *format, va_list args, int *valprintf,
 	ptr = ft_config_flags(args, format[i], valprintf, struc);
 	if (ptr == NULL)
 		return (-1);
-	ft_config_stru(valprintf, struc, ptr, format[i]);
+	format[i] == 'c' || format[i] == 'p' || format[i] == 'u' || format[i]
+	== '%' ? ft_config_stru3(valprintf, struc, ptr, format[i]) : 0;
+	format[i] == 'd' || format[i] == 'i' || format[i] == 'x' ||
+	format[i] == 'X' ? ft_config_stru4(struc, ptr, valprintf, format[i]) : 0;
+	struc->dot == 1 && format[i] == 's' ?
+	ft_config_stru(struc, ptr) : 0;
+	struc->dot == 0 && format[i] == 's' ?
+	ft_config_stru2(struc, ptr) : 0;
 	ft_with_pre_do(format[i], valprintf, ptr, struc);
 	free(ptr);
 	return (++i);
