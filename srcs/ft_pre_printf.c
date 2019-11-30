@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/29 21:40:58 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/30 13:29:45 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -128,7 +128,7 @@ int			ft_no_pre(const char *format, va_list args, int *valprintf,
 	{
 		i = 1;
 		if (format[0] == 'c' && ptr[0] == 0)
-			write(1, "\n", 1);
+			write(1, "\0", 1);
 		else
 		{
 			i = ft_strlen(ptr);
