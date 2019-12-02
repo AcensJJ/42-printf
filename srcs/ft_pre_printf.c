@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/02 21:50:05 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 00:51:47 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,6 +39,7 @@ static void	ft_with_dot(const char *format, va_list args, t_bool *struc)
 	if (format[i] == '*')
 	{
 		struc->zero = va_arg(args, int);
+		struc->zero < 0 ? struc->left = 1 : 0;
 		struc->zero < 0 ? struc->zero *= -1 : 0;
 	}
 }
@@ -63,6 +64,8 @@ static void	ft_no_dot(const char *format, va_list args, t_bool *struc)
 	else if (format[i] == '0' && format[i + 1] == '*')
 	{
 		struc->zero = va_arg(args, int);
+		struc->zero < 0 ? struc->left = 1 : 0;
+		struc->zero < 0 ? struc->zero *= -1 : 0;
 		i += 2;
 	}
 	else
@@ -103,10 +106,42 @@ int			ft_with_pre(const char *format, va_list args, int *valprintf,
 	ptr = ft_config_flags(args, format[i], valprintf, struc);
 	if (ptr == NULL)
 		return (-1);
-	if (struc->left == 1 && struc->space == 0 && struc->zero > 0)
+	if (struc->left == 0 && struc->space > 0 && struc->zero == 0 && struc->dot == 1)
+	{
+		struc->dot = 0;
+	}
+	if (struc->left == 1 && struc->space == 0 && struc->zero > 0 && struc->zero < (int)ft_strlen(ptr) && format[i] == 's')
 	{
 		struc->space = struc->zero;
 		struc->zero = 0;
+		struc->left == 1 && struc->space > 0 && struc->zero == 0 && struc->dot
+	 	== 1 && struc->space > 0 && struc->space != (int)ft_strlen(ptr) ? struc->zero = (int)ft_strlen(ptr) : 0;
+	}
+	if (struc->dot == 1 && struc->left == 1 && struc->space == 0 && struc->zero > 0 && format[i] != 's')
+	{
+		struc->space = 0;
+		struc->zero = 0;
+		struc->print = 0;
+	}
+	if (struc->dot == 1 && struc->left == 1 && struc->space == 0 && struc->zero > 0 && format[i] != 's')
+	{
+		struc->space = 0;
+		struc->zero = 0;
+		struc->left = 0;
+	}
+	if (struc->dot == 0 && struc->left == 1 && struc->space == 0 && struc->zero > 0 && format[i] != 's' && (ft_strcmp(ptr, "0") == 0))
+	{
+		struc->space = struc->zero;
+		struc->zero = 0;
+		struc->left == 1 && struc->space > 0 && struc->zero == 0 && struc->dot
+	 	== 1 && struc->space > 0 && struc->space != (int)ft_strlen(ptr) ? struc->zero = (int)ft_strlen(ptr) : 0;
+	}
+	if (struc->dot == 0 && struc->left == 1 && struc->space == 0 && struc->zero > 0 && format[i] != 's' && !(ft_strcmp(ptr, "0") == 0))
+	{
+		struc->space = struc->zero;
+		struc->zero = 0;
+		struc->left == 1 && struc->space > 0 && struc->zero == 0 && struc->dot
+	 	== 1 && struc->space > 0 && struc->space != (int)ft_strlen(ptr) ? struc->zero = (int)ft_strlen(ptr) : 0;
 	}
 	format[i] == '%' ? struc->zero = 0 : 0;
 	format[i] == 'c' || format[i] == 'p' ?

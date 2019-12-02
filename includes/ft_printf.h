@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 14:39:52 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/02 21:48:33 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/02 22:16:12 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -59,6 +59,7 @@ void				ft_config_stru4(t_bool *struc, char *ptr, int *valprintf,
 								char format);
 void				ft_cas_d_1(t_bool *struc, char *ptr, int *valprintf);
 void				ft_cas_d_1_2(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_1_3(t_bool *struc, char *ptr, int *valprintf);
 void				ft_cas_d_1bis(t_bool *struc, char *ptr, int *valprintf);
 void				ft_cas_d_2(t_bool *struc, char *ptr, int *valprintf);
 void				ft_cas_d_3(t_bool *struc, char *ptr, int *valprintf);
