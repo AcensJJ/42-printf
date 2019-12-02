@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 14:39:52 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/02 16:00:51 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/02 21:48:33 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,7 +40,7 @@ void				ft_end_one_check(t_bool *struc);
 t_bool				*ft_set_struct(t_bool *struc);
 char				*ft_config_flags(va_list args, char format, int *valprintf,
 								t_bool *struc);
-char				*ft_va_null_char(va_list args);
+char				*ft_va_null_char(va_list args, t_bool *struc);
 int					ft_va_null_int(va_list args, t_bool *struc);
 void				ft_print_pre(int *valprintf, t_bool *struc, char *ptr,
 								char format);
@@ -48,6 +48,8 @@ void				ft_print_zero(int *valprintf, t_bool *struc, char *ptr,
 								char format);
 void				ft_with_pre_do(char format, int *valprintf, char *ptr,
 								t_bool *struc);
+void		ft_do_more_config(const char *format, va_list args, t_bool *struc,
+								int i);
 void				ft_print_space(int *valprintf, t_bool *struc);
 void				ft_config_stru(t_bool *struc, char *ptr);
 void				ft_config_stru2(t_bool *struc, char *ptr);
@@ -55,17 +57,18 @@ void				ft_config_stru3(int *valprintf, t_bool *struc, char *ptr,
 								char format);
 void				ft_config_stru4(t_bool *struc, char *ptr, int *valprintf,
 								char format);
-void				ft_cas_d_1(t_bool *struc, char *ptr);
-void				ft_cas_d_1_2(t_bool *struc, char *ptr);
-void				ft_cas_d_1bis(t_bool *struc, char *ptr);
-void				ft_cas_d_2(t_bool *struc, char *ptr);
-void				ft_cas_d_3(t_bool *struc, char *ptr);
-void				ft_cas_d_4(t_bool *struc, char *ptr);
-void				ft_cas_d_5(t_bool *struc, char *ptr);
-void				ft_cas_d_6(t_bool *struc, char *ptr);
-void				ft_cas_d_7(t_bool *struc, char *ptr);
-void				ft_cas_d_8(t_bool *struc, char *ptr);
-void				ft_cas_d_9(t_bool *struc, char *ptr);
-void				ft_cas_d_10(t_bool *struc, char *ptr);
-void				ft_cas_d_11(t_bool *struc, char *ptr);
+void				ft_cas_d_1(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_1_2(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_1bis(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_2(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_3(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_4(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_5(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_6(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_7(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_8(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_9(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_10(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_11(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_12(t_bool *struc, char *ptr);
 #endif

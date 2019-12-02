@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/22 13:34:53 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/02 16:02:18 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/02 21:43:07 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -115,5 +115,5 @@ void		ft_config_stru4(t_bool *struc, char *ptr, int *valprintf,
 		struc->zero = 0;
 	}
 	else
-		ft_cas_d_1(struc, ptr);
+		ft_cas_d_1(struc, ptr, valprintf);
 }

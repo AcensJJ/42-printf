@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/21 18:42:45 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/29 17:12:00 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/02 21:48:01 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,6 +14,19 @@
 #include "ft_printf.h"
 #include "../libft/include/get_next_line.h"
 #include "../libft/include/libft.h"
+
+void		ft_do_more_config(const char *format, va_list args, t_bool *struc,
+							int i)
+{
+	if (format[i] == '0')
+	{
+		struc->zero = ft_atoi(&format[i]);
+		while (format[i] >= '0' && format[i] <= '9')
+			i++;
+	}
+	else if (format[i] == '*')
+		struc->space = va_arg(args, int);
+}
 
 void		ft_print_space(int *valprintf, t_bool *struc)
 {

@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/19 10:12:40 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/28 15:46:27 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/02 21:01:32 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,12 +15,18 @@
 #include "../libft/include/get_next_line.h"
 #include "../libft/include/libft.h"
 
-char	*ft_va_null_char(va_list args)
+char	*ft_va_null_char(va_list args, t_bool *struc)
 {
 	char *ptr;
 
 	ptr = va_arg(args, char *);
 	if (!ptr)
+	{
+		if (!(ptr = ft_strdup("(null)")))
+			return (NULL);
+		return (ptr);
+	}
+	if (struc->dot == 1 && struc->space == 0 && struc->zero == -1)
 	{
 		if (!(ptr = ft_strdup("(null)")))
 			return (NULL);
