@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/30 13:29:45 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/02 14:32:17 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -112,6 +112,7 @@ int			ft_with_pre(const char *format, va_list args, int *valprintf,
 	ft_config_stru(struc, ptr) : 0;
 	struc->dot == 0 && format[i] == 's' ?
 	ft_config_stru2(struc, ptr) : 0;
+	format[i] == '%' ? struc->zero = 0 : 0;
 	ft_with_pre_do(format[i], valprintf, ptr, struc);
 	free(ptr);
 	return (++i);

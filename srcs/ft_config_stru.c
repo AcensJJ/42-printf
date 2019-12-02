@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/22 13:34:53 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/29 22:02:20 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/02 16:02:18 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,7 +24,7 @@ void		ft_config_stru(t_bool *struc, char *ptr)
 	struc->print == -1 ? struc->print = 0 : 0;
 	struc->zero > (int)ft_strlen(ptr) && struc->space == 0 ?
 	struc->zero = (int)ft_strlen(ptr) : 0;
-	struc->print == -1 ? struc->print = (int)ft_strlen(ptr) : 0;
+	struc->print == -1 ? struc->print = 0 : 0;
 	struc->zero > 0 && struc->space == 0 ?
 	struc->space = struc->zero : 0;
 	struc->zero > 0 && struc->space != 0 ?
@@ -34,6 +34,10 @@ void		ft_config_stru(t_bool *struc, char *ptr)
 	(struc->print + struc->zero) : 0;
 	struc->space == 0 && struc->zero == -1 ? struc->print = 0 : 0;
 	struc->zero < 0 && struc->space > 0 ? struc->space -= struc->print : 0;
+	struc->print > (int)ft_strlen(ptr) ? struc->space += struc->print -
+	(int)ft_strlen(ptr) : 0;
+	struc->print > (int)ft_strlen(ptr) ? struc->print =
+	(int)ft_strlen(ptr) : 0;
 }
 
 void		ft_config_stru2(t_bool *struc, char *ptr)
@@ -55,6 +59,9 @@ void		ft_config_stru2(t_bool *struc, char *ptr)
 	struc->zero >= 0 && struc->space > 0 ? struc->space -=
 	(struc->print + struc->zero) : 0;
 	struc->zero < 0 && struc->space > 0 ? struc->space -= struc->print : 0;
+	struc->print > (int)ft_strlen(ptr) ? struc->space += struc->print -
+	(int)ft_strlen(ptr) : 0;
+	struc->print > (int)ft_strlen(ptr) ? struc->print = (int)ft_strlen(ptr) : 0;
 }
 
 void		ft_config_stru3(int *valprintf, t_bool *struc, char *ptr,
