@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 15:11:54 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/02 21:02:44 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 14:51:15 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 #include "../libft/include/get_next_line.h"
 #include "../libft/include/libft.h"
 
-static char		*ft_do_flag4(va_list args, int *valprintf, t_bool *struc)
+static char		*ft_do_flag4(va_list *args, int *valprintf, t_print *struc)
 {
 	char	*str;
 
@@ -31,7 +31,7 @@ static char		*ft_do_flag4(va_list args, int *valprintf, t_bool *struc)
 	return (str);
 }
 
-static char		*ft_do_flag3(va_list args, int *valprintf, t_bool *struc)
+static char		*ft_do_flag3(va_list *args, int *valprintf, t_print *struc)
 {
 	char	*str;
 	char	*ptr;
@@ -39,7 +39,7 @@ static char		*ft_do_flag3(va_list args, int *valprintf, t_bool *struc)
 	str = NULL;
 	if (struc->arg[0] == 'p')
 	{
-		if (!(ptr = ft_uitoa_base(va_arg(args, void *), "0123456789abcdef")))
+		if (!(ptr = ft_uitoa_base(va_arg(*args, void*), "0123456789abcdef")))
 			*valprintf = -1;
 		if (ptr != NULL)
 		{
@@ -54,7 +54,7 @@ static char		*ft_do_flag3(va_list args, int *valprintf, t_bool *struc)
 	return (str);
 }
 
-static char		*ft_do_flag2(va_list args, int *valprintf, t_bool *struc)
+static char		*ft_do_flag2(va_list *args, int *valprintf, t_print *struc)
 {
 	char	*str;
 
@@ -65,13 +65,13 @@ static char		*ft_do_flag2(va_list args, int *valprintf, t_bool *struc)
 			*valprintf = -1;
 		else
 		{
-			str[0] = va_arg(args, int);
+			str[0] = va_arg(*args, int);
 			str[1] = '\0';
 		}
 	}
 	else if (struc->arg[0] == 'u')
 	{
-		if (!(str = ft_uitoa(va_arg(args, unsigned int))))
+		if (!(str = ft_uitoa(va_arg(*args, unsigned int))))
 			*valprintf = -1;
 	}
 	free(struc->arg);
@@ -79,7 +79,7 @@ static char		*ft_do_flag2(va_list args, int *valprintf, t_bool *struc)
 	return (str);
 }
 
-static char		*ft_do_flag(va_list args, int *valprintf, t_bool *struc)
+static char		*ft_do_flag(va_list *args, int *valprintf, t_print *struc)
 {
 	char	*str;
 
@@ -91,13 +91,13 @@ static char		*ft_do_flag(va_list args, int *valprintf, t_bool *struc)
 	}
 	else if (struc->arg[0] == 'x')
 	{
-		if (!(str = ft_itoa_base(va_arg(args, unsigned int),
+		if (!(str = ft_itoa_base(va_arg(*args, unsigned int),
 								"0123456789abcdef")))
 			*valprintf = -1;
 	}
 	else if (struc->arg[0] == 'X')
 	{
-		if (!(str = ft_itoa_base(va_arg(args, unsigned int),
+		if (!(str = ft_itoa_base(va_arg(*args, unsigned int),
 								"0123456789ABCDEF")))
 			*valprintf = -1;
 	}
@@ -106,8 +106,8 @@ static char		*ft_do_flag(va_list args, int *valprintf, t_bool *struc)
 	return (str);
 }
 
-char			*ft_config_flags(va_list args, char format, int *valprintf,
-								t_bool *struc)
+char			*ft_config_flags(va_list *args, char format, int *valprintf,
+								t_print *struc)
 {
 	char	*str;
 

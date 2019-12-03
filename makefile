@@ -6,7 +6,7 @@
 #    By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/18 15:41:28 by jacens       #+#   ##    ##    #+#        #
-#    Updated: 2019/12/03 12:16:00 by jacens      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/03 14:32:30 by jacens      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -40,7 +40,7 @@ all: lib $(NAME)
 lib:
 	make -C $(DIR_LIB)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(DIR_LIB)libft.a
 	cp $(DIR_LIB)libft.a $(NAME)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)

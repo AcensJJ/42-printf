@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/29 17:12:35 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 00:16:02 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 14:48:12 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 #include "../libft/include/get_next_line.h"
 #include "../libft/include/libft.h"
 
-void	ft_cas_d_1bis(t_bool *struc, char *ptr, int *valprintf)
+void	ft_cas_d_1bis(t_print *struc, char *ptr, int *valprintf)
 {
 	if (struc->space == 0 && struc->zero == 0
 	&& (ft_strcmp(ptr, "0") == 0))
@@ -39,7 +39,7 @@ void	ft_cas_d_1bis(t_bool *struc, char *ptr, int *valprintf)
 		ft_cas_d_2(struc, ptr, valprintf);
 }
 
-void	ft_cas_d_2(t_bool *struc, char *ptr, int *valprintf)
+void	ft_cas_d_2(t_print *struc, char *ptr, int *valprintf)
 {
 	if (struc->zero == -1 && struc->space == 0 && struc->print == -1
 	&& (ft_strcmp(ptr, "0") == 0))
@@ -53,7 +53,7 @@ void	ft_cas_d_2(t_bool *struc, char *ptr, int *valprintf)
 		ft_cas_d_3(struc, ptr, valprintf);
 }
 
-void	ft_cas_d_3(t_bool *struc, char *ptr, int *valprintf)
+void	ft_cas_d_3(t_print *struc, char *ptr, int *valprintf)
 {
 	if (struc->zero == -1 && struc->space == 0 && struc->print == -1
 	&& ptr[0] == '-')
@@ -79,7 +79,7 @@ void	ft_cas_d_3(t_bool *struc, char *ptr, int *valprintf)
 		ft_cas_d_4(struc, ptr, valprintf);
 }
 
-void	ft_cas_d_4(t_bool *struc, char *ptr, int *valprintf)
+void	ft_cas_d_4(t_print *struc, char *ptr, int *valprintf)
 {
 	if (struc->zero == -1 && struc->space == 0 && struc->print == -1)
 	{
@@ -102,7 +102,7 @@ void	ft_cas_d_4(t_bool *struc, char *ptr, int *valprintf)
 		ft_cas_d_5(struc, ptr, valprintf);
 }
 
-void	ft_cas_d_5(t_bool *struc, char *ptr, int *valprintf)
+void	ft_cas_d_5(t_print *struc, char *ptr, int *valprintf)
 {
 	if (struc->zero < -1 && struc->space == 0)
 	{

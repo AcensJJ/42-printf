@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/21 18:42:45 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/02 21:48:01 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 16:20:17 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,8 +15,8 @@
 #include "../libft/include/get_next_line.h"
 #include "../libft/include/libft.h"
 
-void		ft_do_more_config(const char *format, va_list args, t_bool *struc,
-							int i)
+void		ft_do_more_config(const char *format, va_list *args,
+								t_print *struc, int i)
 {
 	if (format[i] == '0')
 	{
@@ -25,10 +25,10 @@ void		ft_do_more_config(const char *format, va_list args, t_bool *struc,
 			i++;
 	}
 	else if (format[i] == '*')
-		struc->space = va_arg(args, int);
+		struc->space = va_arg(*args, int);
 }
 
-void		ft_print_space(int *valprintf, t_bool *struc)
+void		ft_print_space(int *valprintf, t_print *struc)
 {
 	int i;
 
@@ -41,7 +41,8 @@ void		ft_print_space(int *valprintf, t_bool *struc)
 	}
 }
 
-void		ft_print_zero(int *valprintf, t_bool *struc, char *ptr, char format)
+void		ft_print_zero(int *valprintf, t_print *struc, char *ptr,
+							char format)
 {
 	int		i;
 
@@ -62,7 +63,7 @@ void		ft_print_zero(int *valprintf, t_bool *struc, char *ptr, char format)
 }
 
 static void	ft_with_pre_do2(char format, int *valprintf, char *ptr,
-						t_bool *struc)
+						t_print *struc)
 {
 	if (format != 's' && (ft_strcmp(ptr, "0") == 0) && struc->print == 0)
 	{
@@ -88,7 +89,7 @@ static void	ft_with_pre_do2(char format, int *valprintf, char *ptr,
 }
 
 void		ft_with_pre_do(char format, int *valprintf, char *ptr,
-						t_bool *struc)
+						t_print *struc)
 {
 	if (format == 'p' && (ft_strcmp(ptr, "0x0") == 0) && struc->print == 0)
 	{

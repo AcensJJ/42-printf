@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 12:23:33 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 14:51:16 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 #include "../libft/include/get_next_line.h"
 #include "../libft/include/libft.h"
 
-static void	ft_with_dot(const char *format, va_list args, t_bool *struc)
+static void	ft_with_dot(const char *format, va_list *args, t_print *struc)
 {
 	int i;
 
@@ -28,7 +28,7 @@ static void	ft_with_dot(const char *format, va_list args, t_bool *struc)
 		i++;
 	if (format[i] == '*')
 	{
-		struc->space = va_arg(args, int);
+		struc->space = va_arg(*args, int);
 		i++;
 	}
 	i++;
@@ -38,13 +38,13 @@ static void	ft_with_dot(const char *format, va_list args, t_bool *struc)
 		i++;
 	if (format[i] == '*')
 	{
-		struc->zero = va_arg(args, int);
+		struc->zero = va_arg(*args, int);
 		struc->zero < 0 ? struc->left = 1 : 0;
 		struc->zero < 0 ? struc->zero *= -1 : 0;
 	}
 }
 
-static void	ft_no_dot(const char *format, va_list args, t_bool *struc)
+static void	ft_no_dot(const char *format, va_list *args, t_print *struc)
 {
 	int i;
 
@@ -63,7 +63,7 @@ static void	ft_no_dot(const char *format, va_list args, t_bool *struc)
 	}
 	else if (format[i] == '0' && format[i + 1] == '*')
 	{
-		struc->zero = va_arg(args, int);
+		struc->zero = va_arg(*args, int);
 		struc->zero < 0 ? struc->left = 1 : 0;
 		struc->zero < 0 ? struc->zero *= -1 : 0;
 		i += 2;
@@ -72,7 +72,7 @@ static void	ft_no_dot(const char *format, va_list args, t_bool *struc)
 		ft_do_more_config(format, args, struc, i);
 }
 
-static int	ft_check_dot(const char *format, va_list args, t_bool *struc)
+static int	ft_check_dot(const char *format, va_list *args, t_print *struc)
 {
 	int i;
 	int j;
@@ -96,8 +96,8 @@ static int	ft_check_dot(const char *format, va_list args, t_bool *struc)
 	return (i);
 }
 
-int			ft_with_pre(const char *format, va_list args, int *valprintf,
-						t_bool *struc)
+int			ft_with_pre(const char *format, va_list *args, int *valprintf,
+						t_print *struc)
 {
 	char	*ptr;
 	int		i;
@@ -122,8 +122,8 @@ int			ft_with_pre(const char *format, va_list args, int *valprintf,
 	return (++i);
 }
 
-int			ft_no_pre(const char *format, va_list args, int *valprintf,
-					t_bool *struc)
+int			ft_no_pre(const char *format, va_list *args, int *valprintf,
+					t_print *struc)
 {
 	char	*ptr;
 	int		i;

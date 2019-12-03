@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/09 14:08:20 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/21 18:02:24 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 14:48:52 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,11 +26,11 @@ static int		ft_verif_flag(char *flag, char verif)
 	return (0);
 }
 
-static int		ft_check_flags(const char *format, va_list args, char *flag,
+static int		ft_check_flags(const char *format, va_list *args, char *flag,
 								int *valprintf)
 {
 	int		i;
-	t_bool	*struc;
+	t_print	*struc;
 
 	struc = NULL;
 	if (!(struc = ft_set_struct(struc)))
@@ -61,7 +61,7 @@ static int		ft_write(const char *format)
 	return (i);
 }
 
-static int		ft_init(const char *format, va_list args, char *flag)
+static int		ft_init(const char *format, va_list *args, char *flag)
 {
 	int		i;
 	int		j;
@@ -96,7 +96,7 @@ int				ft_printf(const char *format, ...)
 	if ((flag = ft_strdup("cspdiuxX")) == NULL)
 		return (-1);
 	va_start(args, format);
-	valprintf = ft_init(format, args, flag);
+	valprintf = ft_init(format, &args, flag);
 	va_end(args);
 	free(flag);
 	return (valprintf);

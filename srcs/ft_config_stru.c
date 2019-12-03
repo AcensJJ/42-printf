@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/22 13:34:53 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/02 21:43:07 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 14:48:04 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 #include "../libft/include/get_next_line.h"
 #include "../libft/include/libft.h"
 
-void		ft_config_stru(t_bool *struc, char *ptr)
+void		ft_config_stru(t_print *struc, char *ptr)
 {
 	struc->space < 0 ? struc->left = 1 : 0;
 	struc->space < 0 ? struc->space *= -1 : 0;
@@ -40,7 +40,7 @@ void		ft_config_stru(t_bool *struc, char *ptr)
 	(int)ft_strlen(ptr) : 0;
 }
 
-void		ft_config_stru2(t_bool *struc, char *ptr)
+void		ft_config_stru2(t_print *struc, char *ptr)
 {
 	struc->space < 0 ? struc->left = 1 : 0;
 	struc->space < 0 ? struc->space *= -1 : 0;
@@ -64,7 +64,7 @@ void		ft_config_stru2(t_bool *struc, char *ptr)
 	struc->print > (int)ft_strlen(ptr) ? struc->print = (int)ft_strlen(ptr) : 0;
 }
 
-void		ft_config_stru3(int *valprintf, t_bool *struc, char *ptr,
+void		ft_config_stru3(int *valprintf, t_print *struc, char *ptr,
 							char format)
 {
 	struc->zero < 0 ? struc->zero = 0 : 0;
@@ -91,7 +91,7 @@ void		ft_config_stru3(int *valprintf, t_bool *struc, char *ptr,
 	}
 }
 
-void		ft_config_stru4(t_bool *struc, char *ptr, int *valprintf,
+void		ft_config_stru4(t_print *struc, char *ptr, int *valprintf,
 							char format)
 {
 	if (struc->space == 0 && struc->zero == 0 && struc->print < 0
