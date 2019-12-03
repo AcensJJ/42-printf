@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/11 06:29:53 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 16:19:25 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 19:29:32 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,6 +29,8 @@ static void		ft_config_ptr2(unsigned long nb, char *ptr, char *base,
 	while (c-- - 1 > 1)
 		len *= i;
 	j = -1;
+	if (count == 0)
+		ptr[++j] = base[0];
 	while (count > 0)
 	{
 		reste = nb % len;

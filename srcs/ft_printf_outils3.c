@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/03 12:15:42 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 14:48:16 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 19:38:17 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,7 +31,7 @@ void		ft_more_config_struc(t_print *struc, char format, char *ptr)
 		struc->zero = (int)ft_strlen(ptr) : 0;
 	}
 	if (struc->dot == 1 && struc->left == 1 && struc->space == 0 &&
-	struc->zero > 0 && format != 's')
+	struc->zero > 0 && format != 's' && (ft_strcmp(ptr, "0") == 0))
 	{
 		struc->space = 0;
 		struc->zero = 0;

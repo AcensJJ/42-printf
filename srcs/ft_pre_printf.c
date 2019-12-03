@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 14:51:16 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 19:50:44 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,8 +39,8 @@ static void	ft_with_dot(const char *format, va_list *args, t_print *struc)
 	if (format[i] == '*')
 	{
 		struc->zero = va_arg(*args, int);
-		struc->zero < 0 ? struc->left = 1 : 0;
-		struc->zero < 0 ? struc->zero *= -1 : 0;
+		struc->zero < 0 && format[i + 1] == 's' ? struc->left = 1 : 0;
+		struc->zero < 0 && format[i + 1] == 's' ? struc->zero *= -1 : 0;
 	}
 }
 
@@ -107,6 +107,7 @@ int			ft_with_pre(const char *format, va_list *args, int *valprintf,
 	if (ptr == NULL)
 		return (-1);
 	ft_more_config_struc(struc, format[i], ptr);
+	struc->space < 0 && struc->zero > 0 && struc->left == 1 && struc->dot == 1 && format[i] != 's' ? struc->zero = 0 : 0;
 	format[i] == '%' ? struc->zero = 0 : 0;
 	format[i] == 'c' || format[i] == 'p' ?
 	ft_config_stru3(valprintf, struc, ptr, format[i]) : 0;
