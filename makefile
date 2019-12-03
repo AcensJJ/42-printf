@@ -6,7 +6,7 @@
 #    By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/18 15:41:28 by jacens       #+#   ##    ##    #+#        #
-#    Updated: 2019/12/03 14:32:30 by jacens      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/03 17:57:53 by jacens      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -52,8 +52,9 @@ clean:
 	rm -f $(OBJ)
 	make clean -C $(DIR_LIB)
 
-fclean: clean
+fclean:
 	rm -f $(NAME)
+	rm -f $(OBJ)
 	make fclean -C $(DIR_LIB)
 
 re : fclean all
