@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/02 15:55:46 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 00:44:28 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 12:16:56 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -113,22 +113,6 @@ void	ft_cas_d_12(t_bool *struc, char *ptr)
 		}
 		struc->space = 0;
 	}
-	else if (!(struc->space == 0 && struc->zero == 0
-	&& (ft_strcmp(ptr, "0") == 0)))
-	{
-		struc->space < 0 ? struc->left = 1 : 0;
-		struc->space < 0 ? struc->space *= -1 : 0;
-		struc->zero < 0 && struc->print < 0 ? struc->print = 0 : 0;
-		struc->zero < 0 ? struc->zero = 0 : 0;
-		ptr[0] == '-' ? struc->zero += 1 : 0;
-		struc->print == -1 ? struc->print = (int)ft_strlen(ptr) : 0;
-		struc->zero -= struc->print;
-		struc->zero < 0 ? struc->zero = 0 : 0;
-		struc->space -= (struc->print + struc->zero);
-		if (struc->print == 0 && struc->space != -1)
-		{
-			struc->space -= ft_strlen(ptr);
-			struc->print = ft_strlen(ptr);
-		}
-	}
+	else
+		ft_cas_d_13(struc, ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 14:39:52 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/02 22:16:12 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/03 12:30:29 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,8 +48,11 @@ void				ft_print_zero(int *valprintf, t_bool *struc, char *ptr,
 								char format);
 void				ft_with_pre_do(char format, int *valprintf, char *ptr,
 								t_bool *struc);
-void		ft_do_more_config(const char *format, va_list args, t_bool *struc,
-								int i);
+void				ft_do_more_config(const char *format, va_list args,
+								t_bool *struc, int i);
+void				ft_more_config_struc(t_bool *struc, char format, char *ptr);
+void				ft_more_config_struc2(t_bool *struc, char format, char *ptr);
+void				ft_more_config_struc3(t_bool *struc, char format, char *ptr);
 void				ft_print_space(int *valprintf, t_bool *struc);
 void				ft_config_stru(t_bool *struc, char *ptr);
 void				ft_config_stru2(t_bool *struc, char *ptr);
@@ -67,9 +70,12 @@ void				ft_cas_d_4(t_bool *struc, char *ptr, int *valprintf);
 void				ft_cas_d_5(t_bool *struc, char *ptr, int *valprintf);
 void				ft_cas_d_6(t_bool *struc, char *ptr, int *valprintf);
 void				ft_cas_d_7(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_7_1(t_bool *struc, char *ptr, int *valprintf);
+void				ft_cas_d_7_2(t_bool *struc, char *ptr, int *valprintf);
 void				ft_cas_d_8(t_bool *struc, char *ptr, int *valprintf);
 void				ft_cas_d_9(t_bool *struc, char *ptr, int *valprintf);
 void				ft_cas_d_10(t_bool *struc, char *ptr, int *valprintf);
 void				ft_cas_d_11(t_bool *struc, char *ptr, int *valprintf);
 void				ft_cas_d_12(t_bool *struc, char *ptr);
+void				ft_cas_d_13(t_bool *struc, char *ptr);
 #endif

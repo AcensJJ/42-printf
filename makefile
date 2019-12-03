@@ -6,7 +6,7 @@
 #    By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/18 15:41:28 by jacens       #+#   ##    ##    #+#        #
-#    Updated: 2019/12/02 15:55:54 by jacens      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/03 12:16:00 by jacens      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -23,6 +23,7 @@ LFLAGS  =   -I $(HEADER)
 SRCS    =	srcs/ft_printf.c\
 			srcs/ft_printf_outils.c\
 			srcs/ft_printf_outils2.c\
+			srcs/ft_printf_outils3.c\
 			srcs/ft_flags_printf.c\
 			srcs/ft_pre_printf.c\
 			srcs/ft_config_stru.c\
@@ -30,6 +31,7 @@ SRCS    =	srcs/ft_printf.c\
 			srcs/ft_pre_cas_d.c\
 			srcs/ft_pre_cas_d_2.c\
 			srcs/ft_pre_cas_d_3.c\
+			srcs/ft_pre_cas_d_4.c\
 
 OBJ     =   $(SRCS:.c=.o)
 
