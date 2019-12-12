@@ -6,14 +6,12 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/29 18:33:38 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 14:48:08 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/12 02:47:49 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "../libft/include/get_next_line.h"
-#include "../libft/include/libft.h"
 
 void	ft_cas_d_6(t_print *struc, char *ptr, int *valprintf)
 {

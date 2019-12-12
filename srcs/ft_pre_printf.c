@@ -6,14 +6,12 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/15 16:59:43 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 19:56:37 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/12 02:48:06 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "../libft/include/get_next_line.h"
-#include "../libft/include/libft.h"
 
 static void	ft_with_dot(const char *format, va_list *args, t_print *struc)
 {

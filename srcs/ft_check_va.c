@@ -6,14 +6,12 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/19 10:12:40 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 14:48:03 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/12 02:47:37 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "../libft/include/get_next_line.h"
-#include "../libft/include/libft.h"
 
 char	*ft_va_null_char(va_list *args, t_print *struc)
 {

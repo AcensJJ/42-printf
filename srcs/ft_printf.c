@@ -6,14 +6,12 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/09 14:08:20 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 14:48:52 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/12 02:48:26 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "../libft/include/get_next_line.h"
-#include "../libft/include/libft.h"
 
 static int		ft_verif_flag(char *flag, char verif)
 {

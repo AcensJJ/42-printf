@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/13 14:39:52 by jacens       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 16:16:03 by jacens      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/12 02:50:41 by jacens      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,6 +18,8 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
+# include "../libft/include/libft.h"
+# include "../libft/include/get_next_line.h"
 
 typedef struct		s_print
 {
