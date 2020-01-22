@@ -47,4 +47,4 @@ ft_substr.o
 ft_tolower.o
 ft_toupper.o
 ft_uitoa_base.o
-ft_uitoia.o
+ft_uitoa.o
