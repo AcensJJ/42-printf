@@ -7,6 +7,7 @@ Description
 Ce projet est clair et efficace. Vous devez recoder printf. Vous aurez dès lors la possibilité de le réutiliser dans vos futurs projets.
 Ce projet porte principalement sur les arguments à taille variable.
 
+
 # Partie obligatoire
 
 ![Screenshot 2020-10-21_19-07-03-552](https://user-images.githubusercontent.com/45235527/96753783-a195b380-13d0-11eb-90f9-31928a4bc773.png)
