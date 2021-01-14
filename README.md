@@ -10,7 +10,7 @@ Ce projet porte principalement sur les arguments à taille variable.
 
 # Partie obligatoire
 
-![Screenshot 2020-10-21_19-07-03-552](https://user-images.githubusercontent.com/45235527/96753783-a195b380-13d0-11eb-90f9-31928a4bc773.png)
+![Sujet](https://user-images.githubusercontent.com/45235527/96753783-a195b380-13d0-11eb-90f9-31928a4bc773.png)
 
 - Le prototype de ft_printf devra être `int ft_printf(const char *, ...);`
 - Vous devez recoder la fonction printf de la libc
