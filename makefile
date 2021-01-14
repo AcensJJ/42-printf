@@ -47,4 +47,4 @@ fclean: clean
 
 re : fclean all
 
-.PHONY : all clean fclean remake
+.PHONY : all clean fclean remake lib
