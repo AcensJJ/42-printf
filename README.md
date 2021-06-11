@@ -4,7 +4,7 @@
 
 <img alt="Note" src="https://user-images.githubusercontent.com/45235527/96753610-698e7080-13d0-11eb-9461-d3351c9208d7.png" width="250" height="200" />
 
-<strong>Description</strong>
+### <strong>Description</strong>
 
 Ce projet est clair et efficace. Vous devez recoder printf. Vous aurez dès lors la possibilité de le réutiliser dans vos futurs projets.
 Ce projet porte principalement sur les arguments à taille variable.
